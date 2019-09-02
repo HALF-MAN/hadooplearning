@@ -30,7 +30,8 @@ public class SequenceFileDemo {
     };
 
     public static void main(String[] args) throws IOException {
-        readerTest();
+//        readerTest();
+        writerTest();
     }
     public static void writerTest() throws IOException {
         String uri = "numbers.seq";
