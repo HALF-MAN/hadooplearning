@@ -27,7 +27,6 @@ public class MaxTemperatureDriver extends Configured implements Tool{
         job.setJarByClass(getClass());
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
-
         job.setMapperClass(MaxTemperatureMapper.class);
         job.setReducerClass(MaxTemperatureReducer.class);
         job.setCombinerClass(MaxTemperatureReducer.class);

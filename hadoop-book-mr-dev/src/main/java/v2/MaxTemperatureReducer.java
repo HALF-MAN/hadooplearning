@@ -21,4 +21,5 @@ public class MaxTemperatureReducer extends Reducer<Text, IntWritable, Text, IntW
         }
         context.write(key, new IntWritable(maxValue));
     }
+
 }

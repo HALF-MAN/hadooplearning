@@ -1,6 +1,7 @@
 package hadooptest;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
+import org.apache.hadoop.mapred.*;
 
 import java.io.*;
 
@@ -17,10 +18,10 @@ public class HDFSFileIfExist {
     }
     public static void main(String[] args) throws IOException {
 //        testExist("/user/zhangyachong/v20190318.pdf");
-//        testCreateFile();
+        testCreateFile();
 //          testGetFile();
 //            deleteFile();
-        chown();
+//        chown();
     }
     public static void testExist(final String fileName) {
         Configuration conf = new Configuration();
@@ -51,10 +52,15 @@ public class HDFSFileIfExist {
             // 要写入的内容
             byte[] buff = "Hello world".getBytes();
             //要写入的文件名
-            String filename = "/user/zhangyachong/hello.txt";
-            os = fs.create(new Path(filename));
-            os.write(buff,0,buff.length);
-            System.out.println("Create:"+ filename);
+            String filename = "/user/zhangyachong/input/010230-99999-1951.gz";
+            Path src = new Path("D:/010230-99999-1951.gz");
+            Path dst = new Path(filename);
+            fs.copyFromLocalFile(src, dst);
+            fs.delete(new Path("output"),true);
+//            os = fs.create(new Path(filename));
+//            os.write(buff,0,buff.length);
+//            System.out.println("Create:"+ filename);
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
