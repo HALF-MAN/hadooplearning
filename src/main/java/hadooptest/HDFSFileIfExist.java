@@ -14,7 +14,7 @@ public class HDFSFileIfExist {
     static {
 //        System.setProperty("hadoop.home.dir", "D:\\hadoop-2.7.7");
 //        System.setProperty("HADOOP_USER_NAME", "mart_ebs");
-        System.setProperty("HADOOP_USER_NAME", "zhangyachong");
+        System.setProperty("HADOOP_USER_NAME", "mart_ebs");
     }
     public static void main(String[] args) throws IOException {
 //        testExist("/user/zhangyachong/v20190318.pdf");
@@ -52,15 +52,16 @@ public class HDFSFileIfExist {
             // 要写入的内容
             byte[] buff = "Hello world".getBytes();
             //要写入的文件名
-            String filename = "/user/zhangyachong/input/010230-99999-1951.gz";
-            Path src = new Path("D:/010230-99999-1951.gz");
-            Path dst = new Path(filename);
-            fs.copyFromLocalFile(src, dst);
-            fs.delete(new Path("output"),true);
+            String filename = "/examples";
+//            Path src = new Path("D:/010230-99999-1951.gz");
+//            Path dst = new Path(filename);
+//            fs.copyFromLocalFile(src, dst);
+//            fs.delete(new Path("output"),true);
 //            os = fs.create(new Path(filename));
 //            os.write(buff,0,buff.length);
 //            System.out.println("Create:"+ filename);
-
+//            fs.copyFromLocalFile(new Path("C:\\Users\\zhangyachong\\Desktop\\oozie-4.1.0\\examples\\src\\main\\apps"), new Path("/example"));
+            fs.rename(new Path("/example"), new Path("/examples"));
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
